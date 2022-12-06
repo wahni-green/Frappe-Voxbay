@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2022-12-06 15:04:59.336281",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "source_number",
+  "extension_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "extension_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Extension Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Agent Number",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-12-06 17:46:51.958037",
+ "modified_by": "Administrator",
+ "module": "Voxbay",
+ "name": "Voxbay Agent Settings User",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

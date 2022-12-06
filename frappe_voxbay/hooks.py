@@ -12,7 +12,7 @@ app_license = "GPL v3"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/frappe_voxbay/css/frappe_voxbay.css"
-# app_include_js = "/assets/frappe_voxbay/js/frappe_voxbay.js"
+app_include_js = "/assets/frappe_voxbay/js/utils.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/frappe_voxbay/css/frappe_voxbay.css"
