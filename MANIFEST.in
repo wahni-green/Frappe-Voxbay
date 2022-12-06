@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include frappe_voxbay *.css
+recursive-include frappe_voxbay *.csv
+recursive-include frappe_voxbay *.html
+recursive-include frappe_voxbay *.ico
+recursive-include frappe_voxbay *.js
+recursive-include frappe_voxbay *.json
+recursive-include frappe_voxbay *.md
+recursive-include frappe_voxbay *.png
+recursive-include frappe_voxbay *.py
+recursive-include frappe_voxbay *.svg
+recursive-include frappe_voxbay *.txt
+recursive-exclude frappe_voxbay *.pyc
