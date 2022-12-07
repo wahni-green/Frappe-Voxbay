@@ -4,7 +4,9 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe_voxbay.api import clicktocall, call
+
+from frappe_voxbay.api import call, clicktocall
+
 
 class VoxbayCall(Document):
 	@frappe.whitelist()
@@ -15,7 +17,7 @@ class VoxbayCall(Document):
 		elif self.type == "Extension to Mobile":
 			call(self.destination_number)
 
-			
+
 	def validate_agent(self):
 		source_number = frappe.db.get_value("Voxbay Agent Settings User", {"user": frappe.session.user}, "source_number")
 		if not source_number:

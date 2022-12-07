@@ -31,17 +31,6 @@ class VoxbayAPI:
 		)
 
 		if response.ok:
-			self.create_call_log()
 			return frappe.msgprint(str(response.text))
 		else:
 			frappe.msgprint(str(response.reason))
-
-	def create_call_log(self, doctype, docname=None):
-		log = frappe.get_doc(
-			{
-				"doctype": "Voxbay Call Log",
-				"user": frappe.session.user,
-				"document": doctype,
-				"docname": docname
-			}
-		).save()

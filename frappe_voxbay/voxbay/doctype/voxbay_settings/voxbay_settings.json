@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "enabled",
   "uid",
   "pin",
   "callerid"
@@ -26,12 +27,18 @@
    "fieldname": "callerid",
    "fieldtype": "Data",
    "label": "Caller ID"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-12-06 11:57:04.214350",
+ "modified": "2022-12-07 12:43:10.605803",
  "modified_by": "Administrator",
  "module": "Voxbay",
  "name": "Voxbay Settings",

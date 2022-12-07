@@ -64,12 +64,12 @@ app_include_js = "/assets/frappe_voxbay/js/utils.js"
 # ------------
 
 # before_install = "frappe_voxbay.install.before_install"
-# after_install = "frappe_voxbay.install.after_install"
+after_install = "frappe_voxbay.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "frappe_voxbay.uninstall.before_uninstall"
+before_uninstall = "frappe_voxbay.uninstall.remove_status_option_call_log"
 # after_uninstall = "frappe_voxbay.uninstall.after_uninstall"
 
 # Desk Notifications
