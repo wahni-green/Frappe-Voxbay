@@ -55,7 +55,7 @@ def cdr_voxbay_log(**kwargs):
 			recording_URL = call_payload.get("recording_URL"),
 		)
 
-		return 0
+		return "success"
 	except Exception as e:
 		request_log.status = "Failed"
 		request_log.error = frappe.get_traceback()
