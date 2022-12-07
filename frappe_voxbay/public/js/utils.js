@@ -1,9 +1,6 @@
 frappe.provide("voxbay");
 frappe.provide("voxbay.utils");
 
-
-// $.extend(voxbay, {})
-
 voxbay.utils.clicktocall = function (destination_number) {
     frappe.call({
         method: "frappe_voxbay.api.clicktocall",
