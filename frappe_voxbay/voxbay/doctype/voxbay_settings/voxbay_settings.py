@@ -6,6 +6,7 @@ import requests
 from frappe.model.document import Document
 from frappe.utils.password import get_decrypted_password
 
+
 class VoxbaySettings(Document):
 	@frappe.whitelist()
 	def test_token(self, extension_number, source_number, destination_number):
@@ -22,14 +23,14 @@ class VoxbaySettings(Document):
 			"ext": extension_number,
 			"callerid": callerid,
 		}
-		
+
 		response = requests.post(
 			endpoint,
 			params=response_data,
 		)
 
 		if response.ok:
-			return frappe.msgprint(str(response.text)) 
+			return frappe.msgprint(str(response.text))
 		else:
 			frappe.msgprint(str(response.reason))
 

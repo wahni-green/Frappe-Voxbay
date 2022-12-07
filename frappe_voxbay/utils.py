@@ -1,9 +1,7 @@
 import frappe
 import requests
 from frappe import _
-from frappe.utils import get_url, nowdate
 from frappe.utils.password import get_decrypted_password
-
 
 
 class VoxbayAPI:
@@ -26,13 +24,24 @@ class VoxbayAPI:
 			"ext": self.extension_number,
 			"callerid": self.callerid,
 		}
-		
+
 		response = requests.post(
 			url,
 			params=response_data,
 		)
 
 		if response.ok:
-			return frappe.msgprint(str(response.text)) 
+			self.create_call_log()
+			return frappe.msgprint(str(response.text))
 		else:
 			frappe.msgprint(str(response.reason))
+
+	def create_call_log(self, doctype, docname=None):
+		log = frappe.get_doc(
+			{
+				"doctype": "Voxbay Call Log",
+				"user": frappe.session.user,
+				"document": doctype,
+				"docname": docname
+			}
+		).save()
