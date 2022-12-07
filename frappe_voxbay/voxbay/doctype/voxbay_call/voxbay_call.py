@@ -21,8 +21,8 @@ class VoxbayCall(Document):
 	def validate_agent(self):
 		source_number = frappe.db.get_value("Voxbay Agent Settings User", {"user": frappe.session.user}, "source_number")
 		if not source_number:
-			frappe.throw(_(f"Please Set Agent Mobile Number > <b>Voxbay Agent Settings</b>"))
+			frappe.throw(_("Please Set Agent Mobile Number > <b>Voxbay Agent Settings</b>"))
 		extension_number = frappe.db.get_value("Voxbay Agent Settings User", {"user": frappe.session.user}, "extension_number")
 		if not extension_number:
-			frappe.throw(_(f"Please Set Agent Extension Number > <b>Voxbay Agent Settings</b>"))
+			frappe.throw(_("Please Set Agent Extension Number > <b>Voxbay Agent Settings</b>"))
 

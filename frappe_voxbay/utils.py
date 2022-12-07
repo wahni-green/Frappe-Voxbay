@@ -1,6 +1,5 @@
 import frappe
 import requests
-from frappe import _
 from frappe.utils.password import get_decrypted_password
 
 
