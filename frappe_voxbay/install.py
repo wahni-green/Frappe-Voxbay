@@ -5,7 +5,6 @@ from frappe.custom.doctype.property_setter.property_setter import \
 
 def add_status_option_call_log():
 	options = (frappe.get_meta("Call Log").get_field("status").options).split("\n")
-	print(options)
 	status = ["ANSWERED", "BUSY", "NOANSWER", "CONGESTION", "CHANUNAVAIL", "CANCEL"]
 	for row in status:
 		if row not in options:
@@ -18,7 +17,6 @@ def add_status_option_call_log():
 				"Text",
 				validate_fields_for_doctype=False
 			)
-			print(row)
 
 def remove_status_option_call_log():
 	options = (frappe.get_meta("Call Log").get_field("status").options).split("\n")
