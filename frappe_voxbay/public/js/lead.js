@@ -11,7 +11,7 @@ frappe.ui.form.on("Lead", {
 
 function call_lead(frm) {
     let d = new frappe.ui.Dialog({
-        title: __("Whatsapp Invite Link"),
+        title: __("Call"),
         fields: [
             {
                 label: __("To"),
