@@ -53,6 +53,7 @@ def cdr_voxbay_log(**kwargs):
 			date = call_payload.get("date"),
 			status = call_payload.get("status"),
 			recording_URL = call_payload.get("recording_URL"),
+			type = call_payload.get("type"),
 		)
 
 		return "success"
