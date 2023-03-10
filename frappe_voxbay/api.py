@@ -31,7 +31,7 @@ def call(destination_number):
 		destination_number=destination_number
 	)
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist(allow_guest=True, methods=["POST"])
 def cdr_voxbay_log(**kwargs):
 	try:
 		if not is_integration_enabled():
