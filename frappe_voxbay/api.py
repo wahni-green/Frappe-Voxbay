@@ -1,3 +1,7 @@
+# Copyright (c) 2023, Wahni IT Solutions and contributors
+# For license information, please see license.txt
+
+import json
 
 import frappe
 from frappe import _
@@ -22,6 +26,7 @@ def clicktocall(destination_number):
 		destination_number=destination_number
 	)
 
+
 @frappe.whitelist()
 def call(destination_number):
 	"""Type: Extension to Mobile"""
@@ -31,41 +36,45 @@ def call(destination_number):
 		destination_number=destination_number
 	)
 
+
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-def cdr_voxbay_log(**kwargs):
+def cdr_voxbay_log():
 	try:
 		if not is_integration_enabled():
-			return
+			return "Disabled"
+		
+		call_payload = json.loads(frappe.request.data)
+
 		request_log = create_request_log(
-			kwargs,
+			call_payload,
 			request_description="Voxbay Call",
 			service_name="Voxbay",
 			request_headers=frappe.request.headers,
 		)
-		request_log.status = "Completed"
 
-		call_payload = kwargs
 		create_call_log(
-			extension=call_payload.get("extension"),
-			destination=call_payload.get("destination"),
-			callerid = call_payload.get("callerid"),
-			duration = call_payload.get("duration"),
-			date = call_payload.get("date"),
-			status = call_payload.get("status"),
-			recording_URL = call_payload.get("recording_URL"),
-			type = call_payload.get("type"),
+			extension=call_payload["extension"],
+			destination=call_payload["destination"],
+			callerid = call_payload["callerid"],
+			duration = call_payload["duration"],
+			date = call_payload["date"],
+			status = call_payload["status"],
+			recording_URL = call_payload["recording_URL"],
+			type = call_payload["type"],
 		)
-
-		return "success"
+		request_log.status = "Completed"
+		request_log.save(ignore_permissions=True)
+		return "Success"
 	except Exception as e:
 		request_log.status = "Failed"
 		request_log.error = frappe.get_traceback()
-		frappe.db.rollback()
-		frappe.log_error(title="Error while creating voxbay call record")
-		frappe.db.commit()
-	finally:
+		frappe.log_error(
+			title="Error while creating voxbay call record",
+			message=str(request_log.error)
+		)
 		request_log.save(ignore_permissions=True)
-
+		frappe.local.response["status_code"] = 400
+		frappe.local.response["message"] = str(e)
 
 
 def create_call_log(
@@ -92,6 +101,6 @@ def create_call_log(
 	frappe.db.commit()
 	return call_log
 
+
 def is_integration_enabled():
 	return frappe.db.get_single_value("Voxbay Settings", "enabled", True)
-
