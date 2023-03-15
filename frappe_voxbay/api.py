@@ -39,6 +39,9 @@ def call(destination_number):
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
 def cdr_voxbay_log():
+	if not is_integration_enabled():
+		return "Disabled"
+
 	request_log = create_request_log(
 		str(frappe.request.data),
 		request_description="Voxbay Call",
@@ -47,11 +50,7 @@ def cdr_voxbay_log():
 	)
 
 	try:
-		if not is_integration_enabled():
-			return "Disabled"
-
 		call_payload = json.loads(frappe.request.data)
-
 		create_call_log(
 			extension=call_payload["extension"],
 			destination=call_payload["destination"],
