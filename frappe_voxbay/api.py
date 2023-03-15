@@ -42,15 +42,15 @@ def cdr_voxbay_log():
 	if not is_integration_enabled():
 		return "Disabled"
 
+	call_payload = json.loads(frappe.request.data)
 	request_log = create_request_log(
-		str(frappe.request.data),
+		call_payload,
 		request_description="Voxbay Call",
 		service_name="Voxbay",
 		request_headers=frappe.request.headers,
 	)
 
 	try:
-		call_payload = json.loads(frappe.request.data)
 		create_call_log(
 			extension=call_payload["extension"],
 			destination=call_payload["destination"],
