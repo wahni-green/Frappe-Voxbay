@@ -59,7 +59,7 @@ def cdr_voxbay_log():
 			date = call_payload["date"],
 			status = call_payload["status"],
 			recording_URL = call_payload["recording_URL"],
-			type = call_payload["type"],
+			type = call_payload["call_type"],
 		)
 		request_log.status = "Completed"
 		request_log.save(ignore_permissions=True)
