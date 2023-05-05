@@ -29,7 +29,9 @@ app_include_js = "/assets/frappe_voxbay/js/utils.js"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Lead" : "public/js/lead.js"}
+doctype_js = {"Lead" : "public/js/lead.js",
+              "Opportunity": "public/js/opportunity.js",
+              }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
