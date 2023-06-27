@@ -45,7 +45,7 @@ def cdr_voxbay_log():
 	call_payload = json.loads(frappe.request.data)
 	request_log = create_request_log(
 		call_payload,
-		request_description="Voxbay Call",
+		# request_description="Voxbay Call",
 		service_name="Voxbay",
 		request_headers=frappe.request.headers,
 	)
@@ -59,7 +59,7 @@ def cdr_voxbay_log():
 			date = call_payload["date"],
 			status = call_payload["status"],
 			recording_URL = call_payload["recording_URL"],
-			type = call_payload["type"],
+			type = call_payload["call_type"],
 		)
 		request_log.status = "Completed"
 		request_log.save(ignore_permissions=True)
