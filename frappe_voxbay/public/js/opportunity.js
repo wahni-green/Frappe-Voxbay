@@ -1,6 +1,5 @@
 frappe.ui.form.on("Opportunity", {
     refresh: function (frm) {
-        console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
         if (!frm.doc.__islocal) {
             frm.add_custom_button(__("Call"), () => {
                 call_lead(frm);
