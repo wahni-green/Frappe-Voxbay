@@ -47,7 +47,7 @@ def cdr_voxbay_log():
 		call_payload,
 		# request_description="Voxbay Call",
 		service_name="Voxbay",
-		request_headers=frappe.request.headers,
+		# request_headers=frappe.request.headers,
 	)
 
 	try:
