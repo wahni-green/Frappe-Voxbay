@@ -45,6 +45,7 @@ def cdr_voxbay_log():
 	call_payload = json.loads(frappe.request.data)
 	request_log = create_request_log(
 		call_payload,
+		integration_type = None,
 		# request_description="Voxbay Call",
 		service_name="Voxbay",
 		# request_headers=frappe.request.headers,
