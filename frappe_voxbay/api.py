@@ -104,3 +104,20 @@ def create_call_log(
 
 def is_integration_enabled():
 	return frappe.db.get_single_value("Voxbay Settings", "enabled", True)
+
+@frappe.whitelist(allow_guest=True)
+def find_salesperson():
+	try:
+		data = json.loads(frappe.request.data)
+		phone_no = data.get("phone_no")
+
+		lead_own = frappe.get_value("Lead",{"phone":phone_no},"lead_owner")
+		if not lead_own:
+			return {"success": False, "error":"Sales person Not Found"}
+		slaes_person_dtls = frappe.get_all("Voxbay Agent Settings User",
+							filters={"user": lead_own},
+							fields=["name", "user", "source_number", "extension_number"])
+		return {"success":True,"sales_person": slaes_person_dtls}
+	except Exception as e:
+		frappe.log_error(message=str(frappe.get_traceback()), title="Find sales person")
+		return {"success": False, "error": str(e)}	
