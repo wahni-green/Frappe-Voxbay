@@ -114,9 +114,7 @@ def find_salesperson():
 		lead_own = frappe.get_value("Lead",{"phone":phone_no},"lead_owner")
 		if not lead_own:
 			return {"success": False, "error":"Sales person Not Found"}
-		slaes_person_dtls = frappe.get_all("Voxbay Agent Settings User",
-							filters={"user": lead_own},
-							fields=["user", "source_number", "extension_number"])
+		slaes_person_dtls = frappe.get_value("Voxbay Agent Settings User",{"user": lead_own},"source_number")
 		return {"success":True,"sales_person": slaes_person_dtls}
 	except Exception as e:
 		frappe.log_error(message=str(frappe.get_traceback()), title="Find sales person")
